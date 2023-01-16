@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-howler: application for sending system notifications via matrix.
+howler: a command line application that sends messages into a specified matrix room, and intended for use as a basic server notification system.
 
 
 Copyright (C) 2020 Mauricio Uribe
@@ -23,17 +23,11 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 SPDX-License-Identifier: GPL-3.0-only
 
 
-This python application is intended to be used as a basic server
-notification system. A set of custom http/REST api calls made to a matrix
-server (in this case, the matrix.org homeserver) are used to send
-notification messages to a matrix room (in this case, a private-ish room 
-shared only between mxu and mxuribeBOT accounts).
+Howler - a python, command line application - is intended to be used as a basic server notification system. A set of custom http/REST api calls made to a matrix server (in this case the matrix.org homeserver) are used to send notification messages to a specified matrix room leveraging the the matrix protocol.
 
-The default mode of the application sends a basic/default message, and 
-it merely appends the hostname. However, you can also use the -m 
-parameter to append a custom message (within quotes of course). Sorry, 
-attachments are not supported at this time. There is also a debug mode 
-which displays a little bit of information on the server's response. 
+It is expected that a dedicated matrix room is established ahead of time in order to receive all notifications produced by this application. Then, as the need arises for notifications to be sent, this application is activated to send the messages to said, dedicated matrix room. Messages can be directed at another matrix user who has access to this same matrix room, or messages can simply be sent to the same matrix account as the sender. Ideally, server operators, system admins, or those new-fangled devops folks would be the traditional audience for this type of application, but pretty much anyone interested in viewing such notifications could leverage this application. I know, I know, not very sophisticated. It suits my needs, and hey I'm learning alot!
+
+The default mode of the application sends a basic/default message, and it merely appends the hostname (of whatever machine it runs on). However, you can also use the -m parameter to append a custom message (within quotes of course). Sorry, attachments are not supported at this time.
 """
 
 import datetime
@@ -51,8 +45,8 @@ __copyright__ = "Copyright 2020 Mauricio Uribe"
 __maintainer__ = "Mauricio Uribe (aka mxu)"
 __license__ = "GPLv3"
 __status__ = "Development"
-__version__ = "0.94"
-__date__ = "2022-12-18"
+__version__ = "0.95"
+__date__ = "2023-01-16"
 
 # Default settings. 
 # #################
