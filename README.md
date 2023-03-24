@@ -169,7 +169,7 @@ More seriously, yes, there are some limits:
 
 * Sorry, this application is only expected to work on linux and linux-like operating systems. But, hey, you are free to fork this project, and adjust it to suit your systems.
 * If the server that will be using this application is somehow blocked (such as via a firewall) from making outbound HTTP calls (via Python Requests library), then this might not be the solution for you! This application expects to be able to make such outbound network connections - even if only briefly.
-* Being a python application, I suppose there could be performance limits as opposed to, say, if this application was written in langiages like Go, Erlang, C/C++, Rust, etc. Then, again, if your system is generating so many notifications that you will be encountering limits due to leveraging Python...maybe you have bigger challenges than basic server notifications. More seriously, if you legitimately have such conditions, please get in touch, because I wish to learn your use-case!
+* Being a python application, I suppose there could be performance limits as opposed to, say, if this application was written in languages like Go, Erlang, C/C++, Rust, etc. Then, again, if your system is generating so many notifications that you will be encountering limits due to leveraging Python...maybe you have bigger challenges than basic server notifications. More seriously, if you legitimately have such conditions, please get in touch, because I wish to learn your use-case!
 
 
 
