@@ -14,7 +14,7 @@ It is a python application; ok, ok, it is a glorified python script. But not a c
 
 1. Ensure that Python version 3.6 or higher is installed on the machine that will run this application.
 2. Ensure that the Python Requests (HTTP library) is installed on the machine that will run this application.
-3. Save a few values within the .bashrc file on the machine that will run this application.
+3. Save a few values (from your relevant matrix homeserver) within the .bashrc file on the machine that will run this application.
 
 ...But, don't worry, just continue and the instructions will guide you along...
 
@@ -31,12 +31,12 @@ $ cd howler
 pip3 install -r requirements.txt
 ```
 
-After the Python dependencies have been installed, now go obtain and save some values within your .bashrc file.
+After the Python dependencies have been installed, now you will need to obtain some values from your matrix homeserver, and save them to your .bashrc file.
 
 
 ## Environment Setup
 
-In order to ensure the proper matrix account does the sending of the messages, and that the messages arrive at your specified matrix room, etc., you will need to obtain and save a few values - as environment variables - into your local machine's **~/.bashrc** file. You will need:
+In order to ensure the proper matrix account does the sending of the messages, and that the messages arrive at your specified matrix room, etc., you will need to obtain and save a few matrix homeserver values - as environment variables - into your local machine's **~/.bashrc** file. You will need:
 
 * The matrix **sender's** matrix ID - e.g. @theSenderAccount:matrix.org - saved as **MATRIX_BOT_USER_ID**.
 * An **access token** for the matrix **sender** - e.g. abc123...fg246...yada...yada... - saved as **MATRIX_BOT_ACCESS_TOKEN**.
@@ -48,12 +48,12 @@ In order to ensure the proper matrix account does the sending of the messages, a
         5. Click on the "Access Token" link in order to display it.
         6. Copy and store the value of the access token somewhere **secret and secure** for now. **You do not want anyone having access to this access token!**
 * The specified target **matrix room's full ID** (html encoded, please) saved as **MATRIX_BOT_ROOM_ID**.
-    * It **SHOULD** be something like this for example (where the exclamation mark is encoded): %21mzyx123abc123lmnop123:matrix.org
+    * It **SHOULD** be something like this for example (where the starting exclamation mark is html encoded): %21mzyx123abc123lmnop123:matrix.org
     * It should **NOT** be like this: !mzyx123abc123lmnop123:matrix.org
 * The **full username** of the message **receipient's** matrix ID - e.g. @johnwick:matrix.org - saved as **MATRIX_RECIPIENT_FULL_USERNAME**.
-    * **Note:** this could also be the same account as the sender, in case you simply wish to send yourself the messages (instead of someone else).
+    * **Note:** this could also be the same account as the sender, in case you simply wish to send yourself the messages (instead of to the attention of someone else).
 * The username ("short name") portion of the message receipient's matrix ID - e.g. johnwick - saved as **MATRIX_RECIPIENT_SHORT_USERNAME**.
-    * **Note:** this could also be the same account as the sender, in case you simply wish to send yourself the messages (instead of someone else).
+    * **Note:** this could also be the same account as the sender, in case you simply wish to send yourself the messages (instead of to the attention of someone else)).
 
 
 Once the above items have been gathered, you would simply add them to the end of your **.bashrc** file. Here's an **example** of what such an addition could look like:
@@ -79,12 +79,12 @@ $ source ~/.bashrc
 
 This is an application that is intended to be run from the command line. So, usage is as follows:
 
-### Using the default (non-custom) message
+### Using the default (non-customized) message
 ```
 python3 ./howler.py
 ```
 
-### Using a custom message
+### Using a customized message
 
 ```
 python3 ./howler.py -m "Uh oh, it appears that there is something amiss with this server."
@@ -167,9 +167,11 @@ Furthermore, it is conceivable that this notification system could become part o
 
 More seriously, yes, there are some limits:
 
-* Sorry, this application is only expected to work on linux and linux-like operating systems. But, hey, you are free to fork this project, and adjust it to suit your systems.
+* Sorry, this application is only expected to work on linux and linux-like operating systems which leverage a .bashrc file. But, hey, this is open source and built with Python, so you are free to fork this project, and adjust it to suit your systems.
 * If the server that will be using this application is somehow blocked (such as via a firewall) from making outbound HTTP calls (via Python Requests library), then this might not be the solution for you! This application expects to be able to make such outbound network connections - even if only briefly.
-* Being a python application, I suppose there could be performance limits as opposed to, say, if this application was written in languages like Go, Erlang, C/C++, Rust, etc. Then, again, if your system is generating so many notifications that you will be encountering limits due to leveraging Python...maybe you have bigger challenges than basic server notifications. More seriously, if you legitimately have such conditions, please get in touch, because I wish to learn your use-case!
+* This application leverages the Matrix.org homeserver for reference to the relavant Matrix room as well as for using that homeserver's API calls. As good citizens on the Matrix network (and other Fediverse systems), it would be ideal to leverage one's own homeserver. Should you desire to use your own homeserver, you would need to adjust the following variable within the Python application, and change it to point to your homeserver: ** `homeserver_api_url` **
+    * For now, this is a limitation because those wishing to change this would need to dive into the Python code, but in the future I could make this another configurable environment variable. We'll see.
+* Being a python application, I suppose there could be performance limits as opposed to, say, if this application was written in languages like Go, Erlang, C/C++, Rust, etc. Then, again, if your system is generating so many notifications that you will be encountering limits due to leveraging Python...maybe you have bigger challenges than basic server notifications. More seriously, if you legitimately have such conditions, please get in touch, because I wish to learn your use-cases!
 
 
 
