@@ -161,6 +161,7 @@ Furthermore, it is conceivable that this notification system could become part o
 
 **A:** Because: security best-practice. I know that the variables could have been saved in a config file, or maybe one of those "fancy" **.env** files (and maybe with the file's permissions set to lock down mode or something). But, nothing seemed as secure as adding the variables to a user's .bashrc file. Also leveraging the .bashrc file approach felt like it struck a nice balance of security with ease of migrating the files for this application around to numerous other machines. By all means, if there is a better, easier, and more secure method, I'm open to suggestions!
 
+
 ### Q: Are There any Limitations and/or Constraints?
 
 **A:** The only limits are your imagination! Sorry, I love stating that!
@@ -173,6 +174,10 @@ More seriously, yes, there are some limits:
     * For now, this is a limitation because those wishing to change this would need to dive into the Python code, but in the future I could make this another configurable environment variable. We'll see.
 * Being a python application, I suppose there could be performance limits as opposed to, say, if this application was written in languages like Go, Erlang, C/C++, Rust, etc. Then, again, if your system is generating so many notifications that you will be encountering limits due to leveraging Python...maybe you have bigger challenges than basic server notifications. More seriously, if you legitimately have such conditions, please get in touch, because I wish to learn your use-cases!
 
+
+### Q: I'm not a fan of Python. Are there alternatives built in other languages or other environments or platforms?
+
+**A:** YES! With the Matrix project being open source and the network being decentralized - and we're free to use/choose from a multitude of applications/clients/libraries - no doubt, there are plenty of options out there. This application is by no means the only one. In fact, I recently learned of one such option named [MatrixTexter](https://github.com/aaviator42/MatrixTexter), which is written in PHP. I'm open to listing other examples, written in other languages as well. Please don't hesitate to reach to me, and suggest some more!
 
 
 ### Q: Seems Like Alot of Environment Setup for Simply Sending Messages, No?
