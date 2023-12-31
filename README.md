@@ -3,7 +3,7 @@
 
 ## Introduction
 
-Howler is a command line application - built with python - that sends messages into a specified matrix room, and intended for use as a basic server notification system.
+Howler is a simple application - built with python - that sends messages into a specified matrix room, and intended for use as a basic server notification system.
 
 See the **Description** section below for more background information, or dive in and get started with the **Installation**.
 
@@ -77,14 +77,20 @@ $ source ~/.bashrc
 
 ## Usage
 
-This is an application that is intended to be run from the command line. So, usage is as follows:
+This is an application that can be used directly from the command line, or imported as a python module into your own python applications.
 
-### Using the default (non-customized) message
+
+### Running directly from the command line
+
+
+#### Using the default (non-customized) message
+
 ```
 python3 ./howler.py
 ```
 
-### Using a customized message
+
+#### Using a customized message
 
 ```
 python3 ./howler.py -m "Uh oh, it appears that there is something amiss with this server."
@@ -94,17 +100,8 @@ python3 ./howler.py -m "Uh oh, it appears that there is something amiss with thi
 python3 ./howler.py --msg "Uh oh, it appears that there is something amiss with this server."
 ```
 
-### Activating debug mode
 
-```
-python3 ./howler.py -d
-```
-...Or...
-```
-python3 ./howler.py --debug
-```
-
-### Getting Help (such as it is)
+#### Getting Help (such as it is)
 
 ```
 python3 ./howler.py -h
@@ -115,9 +112,30 @@ python3 ./howler.py --help
 ```
 
 
+### Imported as a python module
+
+
+#### Using the default (non-customized) message
+
+```
+import howler
+
+howler.matrix_send()
+```
+
+
+#### Using a customized message
+
+```
+import howler
+
+howler.matrix_send(msg="Uh oh, it appears that there is something amiss with this server.")
+```
+
+
 ## Description
 
-Howler - a python, command line application - is intended to be used as a basic server notification system. A set of custom http/REST api calls made to a matrix server (in this case the matrix.org homeserver) are used to send notification messages to a specified matrix room leveraging the the matrix protocol.
+Howler - a simple python application - is intended to be used as a basic server notification system. A set of custom http/REST api calls made to a matrix server (in this case the matrix.org homeserver) are used to send notification messages to a specified matrix room leveraging the the matrix protocol.
 
 It is expected that a dedicated matrix room is established ahead of time in order to receive all notifications produced by this application. Then, as the need arises for notifications to be sent, this application is activated to send the messages to said, dedicated matrix room. Messages can be directed at another matrix user who has access to this same matrix room, or messages can simply be sent to the same matrix account as the sender. Ideally, server operators, system admins, or those new-fangled devops folks would be the traditional audience for this type of application, but pretty much anyone interested in viewing such notifications could leverage this application. I know, I know, not very sophisticated. It suits my needs, and hey I'm learning alot!
 
