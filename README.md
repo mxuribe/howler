@@ -36,12 +36,19 @@ After the Python dependencies have been installed, now you will need to obtain s
 
 ## Environment Setup
 
-In order to ensure the proper matrix account does the sending of the messages, and that the messages arrive at your specified matrix room, etc., you will need to obtain and save a few matrix homeserver values - as environment variables - into your local machine's **~/.bashrc** file. You will need:
+In order to ensure the proper matrix account does the sending of the messages, and that the messages arrive at your specified matrix room, etc., you will need to obtain and save a few matrix homeserver values - as environment variables - into your local machine's environment. While there are several methods for preserving such values within your machine's enviroment, this application assumes these environment variables are saved within your **~/.bashrc** file. You will need the following values:
 
-* The matrix **sender's** matrix ID - e.g. @theSenderAccount:matrix.org - saved as **MATRIX_BOT_USER_ID**.
+* the sender's full matrix ID
+* an access token for the sender
+* the target matrix room's full ID
+* the receipient's full matrix ID
+
+Here are a few more details on these values:
+
+* The matrix **sender's** full matrix ID - e.g. @theSenderAccount:matrix.org - saved as **MATRIX_BOT_USER_ID**.
 * An **access token** for the matrix **sender** - e.g. abc123...fg246...yada...yada... - saved as **MATRIX_BOT_ACCESS_TOKEN**.
-    * Here's how to obtain your access token via the Element matrix web client:
-        1. Log into the matrix account that will be sending the messages (i.e. the account that will be used for this application).
+    * Here's how to obtain your access token via the _Element matrix web client_ (the process may differ for other matrix clients):
+        1. Log into the matrix account that will be **sending** the messages (i.e. the account that will be used for this application).
         2. Navigate to that account's settings; such as by clicking on that account's avatar/profile image, then clicking "All settings" link.
         3. When the pop-up dialog appears, click the "Help & About" link on the left navigation.
         4. After the "Help & About" page loads, scroll all the way to the bottom.
@@ -50,7 +57,7 @@ In order to ensure the proper matrix account does the sending of the messages, a
 * The specified target **matrix room's full ID** (html encoded, please) saved as **MATRIX_BOT_ROOM_ID**.
     * It **SHOULD** be something like this for example (where the starting exclamation mark is html encoded): %21mzyx123abc123lmnop123:matrix.org
     * It should **NOT** be like this: !mzyx123abc123lmnop123:matrix.org
-* The **full username** of the message **receipient's** matrix ID - e.g. @johnwick:matrix.org - saved as **MATRIX_RECIPIENT_FULL_USERNAME**.
+* The matrix **receipient's** full matrix ID - e.g. @johnwick:matrix.org - saved as **MATRIX_RECIPIENT_FULL_USERNAME**.
     * **Note:** this could also be the same account as the sender, in case you simply wish to send yourself the messages (instead of to the attention of someone else).
 * The username ("short name") portion of the message receipient's matrix ID - e.g. johnwick - saved as **MATRIX_RECIPIENT_SHORT_USERNAME**.
     * **Note:** this could also be the same account as the sender, in case you simply wish to send yourself the messages (instead of to the attention of someone else)).
@@ -61,7 +68,7 @@ Once the above items have been gathered, you would simply add them to the end of
 ```
 ...some existing stuff in your .bashrc file...
 ...etc...
-export MATRIX_BOT_USER_ID="@@theSenderAccount:matrix.org"
+export MATRIX_BOT_USER_ID="@theSenderAccount:matrix.org"
 export MATRIX_BOT_ACCESS_TOKEN="abc123...fg246...yada...yada..."
 export MATRIX_BOT_ROOM_ID="%21mzyx123abc123lmnop123:matrix.org"
 export MATRIX_RECIPIENT_SHORT_USERNAME="johnwick"

@@ -45,8 +45,8 @@ __copyright__ = "Copyright 2020 Mauricio Uribe"
 __maintainer__ = "Mauricio Uribe (aka mxu)"
 __license__ = "GPLv3"
 __status__ = "Production"
-__version__ = "1.0"
-__date__ = "2023-12-31"
+__version__ = "1.1"
+__date__ = "2024-04-14"
 
 # Default settings. 
 # #################
@@ -57,8 +57,8 @@ current_datetime = str(datetime.datetime.now())
 # Get hostname of local system (helps with reporting)
 host_name = socket.gethostname()
 
-# Establish the user agent string
-user_agent_string = "Mozilla/5.0 (X11; Linux x86_64; rv:121.0) Gecko/20100101 Firefox/121.0"
+# Establish the user agent string. You can of course use a different one.
+user_agent_string = "Mozilla/5.0 (X11; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0"
 
 # Establishing text for the default message. 
 msg_body_preamble = "Howler notification for host: " + host_name + ". \n\n"
