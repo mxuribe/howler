@@ -30,8 +30,6 @@ It is expected that a dedicated matrix room is established ahead of time in orde
 The default mode of the application sends a basic/default message, and it merely appends the hostname (of whatever machine it runs on). However, you can also use the -m parameter to append a custom message (within quotes of course). Sorry, attachments are not supported at this time.
 """
 
-import datetime
-import json
 import argparse
 import requests
 import socket
@@ -45,14 +43,11 @@ __copyright__ = "Copyright 2020 Mauricio Uribe"
 __maintainer__ = "Mauricio Uribe (aka mxu)"
 __license__ = "GPLv3"
 __status__ = "Production"
-__version__ = "1.1"
-__date__ = "2024-04-14"
+__version__ = "1.2"
+__date__ = "2024-05-07"
 
 # Default settings. 
 # #################
-
-# Get current date, timestamp. Only really using this during debug mode. 
-current_datetime = str(datetime.datetime.now())
 
 # Get hostname of local system (helps with reporting)
 host_name = socket.gethostname()
